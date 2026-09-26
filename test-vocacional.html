@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Vocacional - Red Educativa Medellín</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="img/comun/logoderem.png" alt="logo de red educativa medellín">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="test.html" class="active">TEST</a></li>
+                <li><a href="becas.html">BECAS</a></li>
+                <li><a href="pregrados.html">PREGRADOS</a></li>
+                <li><a href="nosotros.html">NOSOTROS</a></li>
+            </ul>
+        </nav>
+        <div class="registro">
+            <a class="unete" href="registro.html" id="btn_unete">Únete a la red</a>
+        </div>
+    </header>
+
+    <a class="volver_test" href="test.html">← Volver a Test</a>
+
+    <main>
+        <section id="pantalla_intro">
+            <div class="intro_test">
+                <span class="etiqueta">TEST VOCACIONAL</span>
+                <h1>Descubre tu camino profesional</h1>
+                <p>Responde estas afirmaciones con sinceridad. En unos minutos sabrás qué área académica se ajusta más a tus intereses y fortalezas, con carreras y universidades sugeridas para ti.</p>
+            </div>
+
+            <div class="planes">
+                <div class="plan">
+                    <div class="icono_plan"></div>
+                    <span class="tipo_plan">Gratis</span>
+                    <h2>Versión gratuita</h2>
+                    <ul>
+                        <li>20 afirmaciones (5–7 min)</li>
+                        <li>Tu área vocacional principal</li>
+                        <li>Carreras sugeridas para esa área</li>
+                        <li>Informe por correo o descargable</li>
+                    </ul>
+                    <button type="button" class="btn_principal" id="btn_gratis">Comenzar test gratuito</button>
+                </div>
+
+                <div class="plan premium">
+                    <span class="cinta">RECOMENDADO</span>
+                    <div class="icono_plan"></div>
+                    <span class="tipo_plan">Premium</span>
+                    <h2>Versión Premium</h2>
+                    <ul>
+                        <li>50 afirmaciones para más precisión</li>
+                        <li>Tus 3 áreas de mayor afinidad</li>
+                        <li>Carreras y universidades por área</li>
+                        <li>Informe completo, descargable y por correo</li>
+                    </ul>
+                    <button type="button" class="btn_principal" id="btn_premium">Comenzar test Premium </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="pantalla_test" style="display:none;">
+            <div class="caja_test">
+                <div class="barra_test">
+                    <span class="contador" id="contador">Pregunta 1 de 20</span>
+                </div>
+                <div class="barra_avance"><div class="avance" id="avance"></div></div>
+
+                <p class="pregunta" id="pregunta">Cargando pregunta...</p>
+
+                <div class="titulos_escala">
+                    <span>Nada</span><span>Poco</span><span>Algo</span><span>Bastante</span><span>Totalmente</span>
+                </div>
+                <div class="fila_escala" id="fila_escala"></div>
+
+                <div class="navegacion_test">
+                    <button type="button" class="btn_secundario" id="btn_anterior">← Anterior</button>
+                    <span class="aviso_siguiente">Elige una opción para continuar</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="pantalla_resultados" style="display:none;">
+            <div class="resultados">
+                <div class="resumen">
+                    <div id="grafico"></div>
+                    <div class="resumen_texto">
+                        <div class="etiqueta">Tu perfil vocacional predominante</div>
+                        <h2 id="titulo_resultado">—</h2>
+                        <p id="texto_resultado"></p>
+                    </div>
+                </div>
+
+                <div class="cuadro_resultado">
+                    <h3>Resultados por área</h3>
+                    <div id="barras_areas"></div>
+                </div>
+
+                <div class="cuadro_resultado" id="detalle_areas"></div>
+
+                <div class="cuadro_premium" id="bloque_premium" style="display:none;">
+                    <div class="icono_premium"></div>
+                    <div class="texto_premium">
+                        <h3>¿Quieres un análisis más completo?</h3>
+                        <p>La versión Premium evalúa 50 afirmaciones y te muestra tus 3 áreas de mayor afinidad, con carreras y universidades sugeridas para cada una.</p>
+                    </div>
+                    <button type="button" class="btn_principal" id="btn_activar">Desbloquear Premium</button>
+                </div>
+
+                <div class="cuadro_informe">
+                    <h3> Recibe tu informe completo</h3>
+                    <p>Regístrate con tu correo para enviarte este informe o descargarlo en un archivo que puedes guardar o imprimir.</p>
+                    <div class="acciones_informe">
+                        <button type="button" class="btn_principal" id="btn_enviar">Enviar a mi correo</button>
+                        <button type="button" class="btn_borde" id="btn_descargar">Descargar informe</button>
+                    </div>
+                    <p class="aviso_informe" id="aviso_informe"></p>
+                </div>
+
+                <div class="repetir_test">
+                    <a id="btn_repetir">Volver a hacer el test</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="contacto">
+            <div class="footer-correo">
+                <div class="img_correo"><img src="img/comun/imgcorreo.png" alt="correo"></div>
+                <a href="mailto:remuniversidades@gmail.com">remuniversidades@gmail.com</a>
+            </div>
+            <div class="footer-tel">
+                <div class="img_tel"><img src="img/comun/imgtel.png" alt="teléfono"></div>
+                <span>(604) 4725811</span>
+            </div>
+            <div class="footer-insta">
+                <div class="img_insta"><img src="img/comun/imginsta.png" alt="instagram"></div>
+                <a href="https://www.instagram.com/remuniversidades">@rem_universidades</a>
+            </div>
+            <div class="footer-whatsapp">
+                <div class="img_whats"><img src="img/comun/imgwhatsapp.png" alt="whatsapp"></div>
+                <a href="#">+57 3228540721</a>
+            </div>
+            <div class="footer-facebook">
+                <div class="img_face"><img src="img/comun/imgface.png" alt="facebook"></div>
+                <a href="https://www.facebook.com/share/18jr8h1ngb/">Red Educativa Medellín</a>
+            </div>
+            <div class="footer-twitter">
+                <div class="img_twitter"><img src="img/comun/imgtwitter.png" alt="twitter"></div>
+                <a href="https://x.com/remunimed_">@remunimed_</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/util.js"></script>
+    <script src="js/sesion.js"></script>
+    <script src="js/quiz-common.js"></script>
+    <script src="js/data-vocacional.js"></script>
+    <script src="js/quiz-vocacional.js"></script>
+</body>
+</html>

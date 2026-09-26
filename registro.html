@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta - Red Educativa Medellín</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body class="fondooo">
+    <header class="header">
+        <div class="logo">
+            <img src="img/comun/logoderem.png" alt="logo de red educativa medellín">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="test.html">TEST</a></li>
+                <li><a href="becas.html">BECAS</a></li>
+                <li><a href="pregrados.html">PREGRADOS</a></li>
+                <li><a href="nosotros.html">NOSOTROS</a></li>
+            </ul>
+        </nav>
+        <div class="registro">
+            <a class="unete" href="registro.html" id="btn_unete">Únete a la red</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="pagina_angosta">
+            <div class="caja_formulario">
+                <h1>Únete a la Red Educativa Medellín</h1>
+                <p>Crea tu cuenta para guardar tus resultados, activar tu Premium y recibir tus informes por correo.</p>
+
+                <div class="mensaje_error" id="aviso_correo" style="display:none;"></div>
+
+                <form id="form_registro" novalidate>
+                    <div class="fila_campos">
+                        <div class="campo_modal">
+                            <label for="campo_nombre">Nombre</label>
+                            <input type="text" id="campo_nombre" placeholder="Laura" autocomplete="given-name" required>
+                        </div>
+                        <div class="campo_modal">
+                            <label for="campo_apellido">Apellido</label>
+                            <input type="text" id="campo_apellido" placeholder="Gómez" autocomplete="family-name" required>
+                        </div>
+                    </div>
+                    <div class="campo_modal">
+                        <label for="campo_correo">Correo electrónico</label>
+                        <input type="email" id="campo_correo" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+                    </div>
+                    <div class="campo_modal">
+                        <label for="campo_telefono">Número de teléfono</label>
+                        <input type="tel" id="campo_telefono" placeholder="300 000 0000" autocomplete="tel" required>
+                    </div>
+                    <div class="fila_campos">
+                        <div class="campo_modal">
+                            <label for="campo_clave">Contraseña</label>
+                            <input type="password" id="campo_clave" placeholder="Mínimo 6 caracteres" autocomplete="new-password" required>
+                        </div>
+                        <div class="campo_modal">
+                            <label for="campo_confirmar">Confirmar contraseña</label>
+                            <input type="password" id="campo_confirmar" placeholder="Repite tu contraseña" autocomplete="new-password" required>
+                        </div>
+                    </div>
+                    <div class="error_modal" id="mensaje_error"></div>
+                    <div class="acciones_modal">
+                        <button type="submit" class="btn_principal" id="btn_registrar">Crear mi cuenta</button>
+                    </div>
+                    <p class="nota_modal">Al registrarte aceptas que Red Educativa Medellín te contacte con información sobre becas, pregrados y tus resultados.</p>
+                </form>
+
+                <p class="enlace_secundario">¿Ya tienes cuenta? <a href="login.html" id="enlace_login">Inicia sesión</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="contacto">
+            <div class="footer-correo">
+                <div class="img_correo"><img src="img/comun/imgcorreo.png" alt="correo"></div>
+                <a href="mailto:remuniversidades@gmail.com">remuniversidades@gmail.com</a>
+            </div>
+            <div class="footer-tel">
+                <div class="img_tel"><img src="img/comun/imgtel.png" alt="teléfono"></div>
+                <span>(604) 4725811</span>
+            </div>
+            <div class="footer-insta">
+                <div class="img_insta"><img src="img/comun/imginsta.png" alt="instagram"></div>
+                <a href="https://www.instagram.com/remuniversidades">@rem_universidades</a>
+            </div>
+            <div class="footer-whatsapp">
+                <div class="img_whats"><img src="img/comun/imgwhatsapp.png" alt="whatsapp"></div>
+                <a href="#">+57 3228540721</a>
+            </div>
+            <div class="footer-facebook">
+                <div class="img_face"><img src="img/comun/imgface.png" alt="facebook"></div>
+                <a href="https://www.facebook.com/share/18jr8h1ngb/">Red Educativa Medellín</a>
+            </div>
+            <div class="footer-twitter">
+                <div class="img_twitter"><img src="img/comun/imgtwitter.png" alt="twitter"></div>
+                <a href="https://x.com/remunimed_">@remunimed_</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/util.js"></script>
+    <script src="js/sesion.js"></script>
+    <script src="js/registro.js"></script>
+</body>
+</html>
