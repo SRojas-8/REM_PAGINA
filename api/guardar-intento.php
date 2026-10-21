@@ -13,7 +13,6 @@ $datos = rem_leer_json();
 $usuario = rem_usuario_actual();
 
 $testClave  = $datos['test'] ?? '';
-$modo       = $datos['modo'] ?? 'gratis';
 $areas      = $datos['areas'] ?? [];
 $respuestas = $datos['respuestas'] ?? [];
 
@@ -31,13 +30,12 @@ if (!$test) {
 
 try {
     $stmt = $pdo->prepare(
-        'INSERT INTO intentos (usuario_id, test_id, modo, total_preguntas, correctas, porcentaje, puntaje_estimado, resumen, tiempo_segundos)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'
+        'INSERT INTO intentos (usuario_id, test_id, total_preguntas, correctas, porcentaje, puntaje_estimado, resumen, tiempo_segundos)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
     );
     $stmt->execute([
         $usuario['id'] ?? null,
         $test['id'],
-        $modo === 'premium' ? 'premium' : 'gratis',
         (int) ($datos['totalPreguntas'] ?? 0),
         (int) ($datos['correctas'] ?? 0),
         (int) ($datos['porcentaje'] ?? 0),

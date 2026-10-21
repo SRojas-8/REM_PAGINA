@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universidades de Pregrados - Red Educativa Medellín</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body class="fondooo">
+    <header class="header">
+        <div class="logo">
+            <a href="index.html" title="Ir al inicio">
+                <img src="img/comun/logoderem.png" alt="logo de red educativa medellín">
+            </a>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="test.html">TEST</a></li>
+                <li><a href="becas.html">BECAS</a></li>
+                <li><a href="pregrados.html">PREGRADOS</a></li>
+                <li><a href="nosotros.html">NOSOTROS</a></li>
+            </ul>
+        </nav>
+        <div class="registro">
+            <a class="unete" href="registro.html" id="btn_unete">Únete a la red</a>
+        </div>
+    </header>
+
+    <a class="volver_test" href="cuenta.html">← Volver a mi cuenta</a>
+
+    <main>
+        <section class="pagina_ancha">
+            <div class="sin_sesion" id="bloque_sin_permiso" style="display:none;">
+                <h1 id="titulo_sin_permiso"></h1>
+                <p id="texto_sin_permiso"></p>
+                <div class="botones_sesion">
+                    <a class="btn_principal" id="enlace_sin_permiso" href="login.html?volver=admin.html">Iniciar sesión</a>
+                </div>
+            </div>
+
+            <div id="bloque_admin" style="display:none;">
+                <div class="resumen_cuenta">
+                    <div>
+                        <h1>Universidades de Pregrados</h1>
+                        <p>Lo que cambies aquí se ve al instante en la sección Pregrados</p>
+                    </div>
+                </div>
+
+                <div class="cuadro_resultado">
+                    <div class="cabeza_admin">
+                        <h3>Universidades</h3>
+                        <button type="button" class="btn_principal" id="btn_agregar">+ Agregar universidad</button>
+                    </div>
+
+                    <div class="mensaje_ok" id="aviso_admin" style="display:none;"></div>
+                    <div class="error_modal" id="error_lista"></div>
+
+                    <form class="form_universidad" id="form_universidad" style="display:none;" novalidate>
+                        <h4 id="titulo_form">Agregar universidad</h4>
+                        <div class="campo_modal">
+                            <label for="uni_nombre">Nombre</label>
+                            <input type="text" id="uni_nombre" maxlength="150" required>
+                        </div>
+                        <div class="campo_modal">
+                            <label for="uni_url">Enlace de la oferta de pregrados</label>
+                            <input type="url" id="uni_url" maxlength="500" placeholder="https://..." required>
+                        </div>
+                        <div class="campo_modal">
+                            <label for="uni_escudo">Escudo (PNG, JPG o WEBP, máximo 1 MB)</label>
+                            <input type="file" id="uni_escudo" accept="image/png,image/jpeg,image/webp">
+                            <img class="vista_escudo" id="vista_escudo" alt="Vista previa del escudo" style="display:none;">
+                        </div>
+                        <div class="error_modal" id="error_form"></div>
+                        <div class="acciones_modal">
+                            <button type="submit" class="btn_principal" id="btn_guardar">Guardar</button>
+                            <button type="button" class="btn_secundario" id="btn_cancelar">Cancelar</button>
+                        </div>
+                    </form>
+
+                    <div id="lista_universidades"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="contacto">
+            <div class="footer-correo">
+                <div class="img_correo"><img src="img/comun/imgcorreo.png" alt="correo"></div>
+                <a href="mailto:remuniversidades@gmail.com">remuniversidades@gmail.com</a>
+            </div>
+            <div class="footer-tel">
+                <div class="img_tel"><img src="img/comun/imgtel.png" alt="teléfono"></div>
+                <span>(604) 4725811</span>
+            </div>
+            <div class="footer-insta">
+                <div class="img_insta"><img src="img/comun/imginsta.png" alt="instagram"></div>
+                <a href="https://www.instagram.com/remuniversidades">@rem_universidades</a>
+            </div>
+            <div class="footer-whatsapp">
+                <div class="img_whats"><img src="img/comun/imgwhatsapp.png" alt="whatsapp"></div>
+                <a href="#">+57 3228540721</a>
+            </div>
+            <div class="footer-facebook">
+                <div class="img_face"><img src="img/comun/imgface.png" alt="facebook"></div>
+                <a href="https://www.facebook.com/share/18jr8h1ngb/">Red Educativa Medellín</a>
+            </div>
+            <div class="footer-twitter">
+                <div class="img_twitter"><img src="img/comun/imgtwitter.png" alt="twitter"></div>
+                <a href="https://x.com/remunimed_">@remunimed_</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/util.js"></script>
+    <script src="js/sesion.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

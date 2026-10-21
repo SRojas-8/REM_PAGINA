@@ -9,7 +9,9 @@
 <body>
     <header class="header">
         <div class="logo">
-            <img src="img/comun/logoderem.png" alt="logo de red educativa medellín">
+            <a href="index.html" title="Ir al inicio">
+                <img src="img/comun/logoderem.png" alt="logo de red educativa medellín">
+            </a>
         </div>
         <nav class="navbar">
             <ul>
@@ -28,51 +30,15 @@
     <a class="volver_test" href="test.html">← Volver a Test</a>
 
     <main>
-        <section id="pantalla_intro">
-            <div class="intro_test">
-                <span class="etiqueta">TEST VOCACIONAL</span>
-                <h1>Descubre tu camino profesional</h1>
-                <p>Responde estas afirmaciones con sinceridad. En unos minutos sabrás qué área académica se ajusta más a tus intereses y fortalezas, con carreras y universidades sugeridas para ti.</p>
-            </div>
-
-            <div class="planes">
-                <div class="plan">
-                    <div class="icono_plan"></div>
-                    <span class="tipo_plan">Gratis</span>
-                    <h2>Versión gratuita</h2>
-                    <ul>
-                        <li>20 afirmaciones (5–7 min)</li>
-                        <li>Tu área vocacional principal</li>
-                        <li>Carreras sugeridas para esa área</li>
-                        <li>Informe por correo o descargable</li>
-                    </ul>
-                    <button type="button" class="btn_principal" id="btn_gratis">Comenzar test gratuito</button>
-                </div>
-
-                <div class="plan premium">
-                    <span class="cinta">RECOMENDADO</span>
-                    <div class="icono_plan"></div>
-                    <span class="tipo_plan">Premium</span>
-                    <h2>Versión Premium</h2>
-                    <ul>
-                        <li>50 afirmaciones para más precisión</li>
-                        <li>Tus 3 áreas de mayor afinidad</li>
-                        <li>Carreras y universidades por área</li>
-                        <li>Informe completo, descargable y por correo</li>
-                    </ul>
-                    <button type="button" class="btn_principal" id="btn_premium">Comenzar test Premium </button>
-                </div>
-            </div>
-        </section>
-
-        <section id="pantalla_test" style="display:none;">
+        <section id="pantalla_test">
             <div class="caja_test">
                 <div class="barra_test">
-                    <span class="contador" id="contador">Pregunta 1 de 20</span>
+                    <span class="contador" id="contador"></span>
                 </div>
                 <div class="barra_avance"><div class="avance" id="avance"></div></div>
 
-                <p class="pregunta" id="pregunta">Cargando pregunta...</p>
+                <p class="pregunta" id="pregunta">Cargando preguntas...</p>
+                <button type="button" class="btn_principal" id="btn_reintentar" style="display:none;">Reintentar</button>
 
                 <div class="titulos_escala">
                     <span>Nada</span><span>Poco</span><span>Algo</span><span>Bastante</span><span>Totalmente</span>
@@ -103,15 +69,6 @@
                 </div>
 
                 <div class="cuadro_resultado" id="detalle_areas"></div>
-
-                <div class="cuadro_premium" id="bloque_premium" style="display:none;">
-                    <div class="icono_premium"></div>
-                    <div class="texto_premium">
-                        <h3>¿Quieres un análisis más completo?</h3>
-                        <p>La versión Premium evalúa 50 afirmaciones y te muestra tus 3 áreas de mayor afinidad, con carreras y universidades sugeridas para cada una.</p>
-                    </div>
-                    <button type="button" class="btn_principal" id="btn_activar">Desbloquear Premium</button>
-                </div>
 
                 <div class="cuadro_informe">
                     <h3> Recibe tu informe completo</h3>

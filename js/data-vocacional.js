@@ -1,4 +1,5 @@
 window.REM_VOCACIONAL = {
+    // las afirmaciones viven en la base de datos: las entrega api/preguntas.php
 
     areas: {
         stem: {
@@ -31,40 +32,5 @@ window.REM_VOCACIONAL = {
             texto: "Tienes visión estratégica: te gusta liderar equipos, organizar recursos y tomar decisiones para alcanzar objetivos.",
             carreras: ["Administración de Empresas", "Negocios Internacionales", "Mercadeo", "Finanzas", "Economía", "Contaduría Pública"]
         }
-    },
-
-    // estas son las 20 afirmaciones gratuitas. Las 50 de la versión
-    // Premium ya no viven aquí: las entrega api/preguntas-premium.php
-    // solo a quien haya pagado.
-    preguntas: [
-        // ---------- STEM ----------
-        { id: "v01", area: "stem", texto: "Disfruto resolver problemas de matemáticas o de lógica." },
-        { id: "v02", area: "stem", texto: "Me llama la atención entender cómo funcionan las máquinas o los aparatos electrónicos." },
-        { id: "v03", area: "stem", texto: "Se me facilita identificar patrones al analizar datos o información." },
-        { id: "v04", area: "stem", texto: "Me gustaría diseñar o construir estructuras, puentes o edificios." },
-
-        // ---------- SALUD ----------
-        { id: "v11", area: "salud", texto: "Me interesa saber cómo funciona el cuerpo humano." },
-        { id: "v12", area: "salud", texto: "Disfruto ayudar a otras personas cuando se sienten mal o están enfermas." },
-        { id: "v13", area: "salud", texto: "Me gustaría trabajar en un hospital, una clínica o un centro de salud." },
-        { id: "v14", area: "salud", texto: "Soy una persona paciente y tranquila en situaciones de estrés o urgencia." },
-
-        // ---------- SOCIAL ----------
-        { id: "v21", area: "social", texto: "Me interesa entender por qué las personas piensan y actúan de cierta manera." },
-        { id: "v22", area: "social", texto: "Disfruto leer sobre historia, política o cultura de otros países." },
-        { id: "v23", area: "social", texto: "Me gustaría trabajar en proyectos que ayuden a mejorar mi comunidad." },
-        { id: "v24", area: "social", texto: "Me considero una persona empática, que escucha bien a los demás." },
-
-        // ---------- ARTE ----------
-        { id: "v31", area: "arte", texto: "Disfruto actividades creativas como dibujar, diseñar o crear contenido." },
-        { id: "v32", area: "arte", texto: "Me gusta expresar ideas a través de imágenes, videos o sonidos." },
-        { id: "v33", area: "arte", texto: "Se me facilita imaginar cómo se vería algo antes de crearlo." },
-        { id: "v34", area: "arte", texto: "Disfruto contar historias, ya sea escribiendo, hablando o grabando." },
-
-        // ---------- NEGOCIOS ----------
-        { id: "v41", area: "negocios", texto: "Me gustaría liderar o coordinar un equipo de trabajo." },
-        { id: "v42", area: "negocios", texto: "Me interesa saber cómo se crea y se administra una empresa." },
-        { id: "v43", area: "negocios", texto: "Disfruto organizar tareas, tiempos y recursos para lograr un objetivo." },
-        { id: "v44", area: "negocios", texto: "Me llama la atención el mundo de las finanzas, la inversión o los negocios." }
-    ]
+    }
 };

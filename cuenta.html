@@ -9,7 +9,9 @@
 <body class="fondooo">
     <header class="header">
         <div class="logo">
-            <img src="img/comun/logoderem.png" alt="logo de red educativa medellín">
+            <a href="index.html" title="Ir al inicio">
+                <img src="img/comun/logoderem.png" alt="logo de red educativa medellín">
+            </a>
         </div>
         <nav class="navbar">
             <ul>
@@ -29,7 +31,7 @@
         <section class="pagina_ancha">
             <div class="sin_sesion" id="bloque_sin_sesion" style="display:none;">
                 <h1>Inicia sesión para ver tu cuenta</h1>
-                <p>Ahí guardamos tu historial de test, tus resultados y tu acceso Premium.</p>
+                <p>Ahí guardamos tu historial de test, y tus resultados.</p>
                 <div class="botones_sesion">
                     <a class="btn_principal" href="login.html?volver=cuenta.html">Iniciar sesión</a>
                     <a class="btn_borde" href="registro.html?volver=cuenta.html">Crear una cuenta</a>
@@ -46,14 +48,17 @@
                     <button type="button" class="btn_borde" id="btn_cerrar_sesion">Cerrar sesión</button>
                 </div>
 
-                <div class="cuadro_resultado" id="bloque_admin" style="display:none;">
-                    <h3>Solicitudes Premium</h3>
-                    <p class="nota_admin">Confirma solo después de verificar el comprobante de Nequi por WhatsApp.</p>
-                    <div class="tabla_solicitudes" id="solicitudes_pendientes"></div>
-
-                    <h4 id="titulo_procesadas" style="display:none;">Ya procesadas</h4>
-                    <div class="tabla_solicitudes" id="solicitudes_procesadas"></div>
+                <div class="cuadro_resultado herramientas_admin" id="bloque_admin" style="display:none;">
+                    <h3>Herramientas de administrador</h3>
+                    <a class="tarjeta_herramienta" href="admin.html">
+                        <span class="texto_herramienta">
+                            <strong>Universidades de Pregrados</strong>
+                            <span>Agrega, edita, ordena u oculta las universidades que ven los estudiantes en la sección Pregrados.</span>
+                        </span>
+                        <span class="accion_herramienta">Administrar →</span>
+                    </a>
                 </div>
+
 
                 <div class="cuadro_resultado">
 
@@ -84,11 +89,11 @@
                             <div class="fila_campos">
                                 <div class="campo_modal">
                                     <label for="perfil_clave_actual">Contraseña actual</label>
-                                    <input type="password" id="perfil_clave_actual" placeholder="Solo si vas a cambiarla" autocomplete="current-password">
+                                    <input type="password" id="perfil_clave_actual" placeholder="Ingresa tu contraseña actual para cambiarla." autocomplete="current-password">
                                 </div>
                                 <div class="campo_modal">
                                     <label for="perfil_clave_nueva">Nueva contraseña</label>
-                                    <input type="password" id="perfil_clave_nueva" placeholder="Déjalo vacío para no cambiarla" autocomplete="new-password">
+                                    <input type="password" id="perfil_clave_nueva" placeholder="Ingresa tu nueva contraseña." autocomplete="new-password">
                                 </div>
                             </div>
                             <div class="error_modal" id="error_perfil"></div>
@@ -101,7 +106,7 @@
 
                     <div class="eliminar">
                         <h3>Eliminar mi cuenta</h3>
-                        <p class="nota_admin">Esto borra tu cuenta y tu acceso Premium para siempre. Tus resultados de test se quedan guardados en las estadísticas del sitio, pero ya sin tu nombre.</p>
+                        <p class="nota_cuenta">Esto borra tu cuenta para siempre. Tus resultados de test se quedan guardados en las estadísticas del sitio, pero ya sin tu nombre.</p>
                         <form id="form_eliminar" novalidate>
                             <div class="campo_modal">
                                 <label for="eliminar_clave">Escribe tu contraseña para confirmar</label>

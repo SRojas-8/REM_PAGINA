@@ -7,7 +7,8 @@ const PAGINA = "test-vocacional.html";
 
 const ESCALA = ["Nada de acuerdo", "Poco de acuerdo", "Algo de acuerdo", "Bastante de acuerdo", "Totalmente de acuerdo"];
 
-let modo = "gratis";
+const TOP_AREAS = 3;
+
 let preguntas = [];
 let actual = 0;
 let respuestas = {};
@@ -16,33 +17,37 @@ let intentoId = null;
 
 
 function mostrarPantalla(cual) {
-    $("pantalla_intro").style.display = cual === "intro" ? "" : "none";
     $("pantalla_test").style.display = cual === "test" ? "" : "none";
     $("pantalla_resultados").style.display = cual === "resultados" ? "" : "none";
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-async function empezar(nuevoModo) {
-    if (nuevoModo === "premium") {
-        const resultado = await pedirApi("preguntas-premium.php?test=vocacional");
-        if (!resultado.exito) {
-            if (resultado.estado === 401) {
-                location.href = `login.html?volver=${encodeURIComponent(PAGINA + "?premium=1")}`;
-            } else {
-                location.href = "premium.html?test=vocacional";
-            }
-            return;
-        }
-        preguntas = mezclar(resultado.preguntas);
-    } else {
-        preguntas = mezclar(REM_VOCACIONAL.preguntas);
+async function empezar() {
+    mostrarPantalla("test");
+    $("contador").textContent = "";
+    $("avance").style.width = "0%";
+    $("btn_anterior").disabled = true;
+    $("pregunta").textContent = "Cargando preguntas...";
+    $("fila_escala").innerHTML = "";
+    $("btn_reintentar").style.display = "none";
+
+    let resultado;
+    try {
+        resultado = await pedirApi("preguntas.php?test=vocacional");
+    } catch (error) {
+        resultado = { exito: false };
     }
 
-    modo = nuevoModo;
+    if (!resultado.exito) {
+        $("pregunta").textContent = "No pudimos cargar las preguntas. Revisa tu conexión e intenta de nuevo.";
+        $("btn_reintentar").style.display = "";
+        return;
+    }
+
+    preguntas = mezclar(resultado.preguntas);
     actual = 0;
     respuestas = {};
 
-    mostrarPantalla("test");
     pintarPregunta();
 }
 
@@ -110,7 +115,6 @@ async function terminar() {
 
     const guardado = await pedirApi("guardar-intento.php", {
         test: "vocacional",
-        modo,
         totalPreguntas: preguntas.length,
         correctas: 0,
         porcentaje: resultados[0].porcentaje,
@@ -124,8 +128,6 @@ async function terminar() {
 
 function pintarResultados() {
     const mejor = resultados[0];
-    const cuantas = modo === "premium" ? 3 : 1;
-
     $("grafico").innerHTML = anilloResultado(mejor.porcentaje, "afinidad");
     $("titulo_resultado").textContent = mejor.nombre;
     $("texto_resultado").textContent = mejor.texto;
@@ -137,7 +139,7 @@ function pintarResultados() {
         </div>
     `).join("");
 
-    $("detalle_areas").innerHTML = resultados.slice(0, cuantas).map(area => `
+    $("detalle_areas").innerHTML = resultados.slice(0, TOP_AREAS).map(area => `
         <div class="detalle_area">
             <h4>${area.nombre} — ${area.porcentaje}% de afinidad</h4>
             <p>${area.texto}</p>
@@ -147,20 +149,18 @@ function pintarResultados() {
         <p class="nota_areas">Análisis basado en tus ${preguntas.length} respuestas.
         <a href="pregrados.html">Ver programas relacionados en Pregrados →</a></p>`;
 
-    // el cuadro de premium solo tiene sentido si el test se hizo gratis
-    $("bloque_premium").style.display = modo === "premium" ? "none" : "";
     $("aviso_informe").classList.remove("visible");
 }
 
 function guardarResultadoSesion() {
-    sessionStorage.setItem("rem_resultado_vocacional", JSON.stringify({ modo, preguntas, respuestas, resultados, intentoId }));
+    sessionStorage.setItem("rem_resultado_vocacional", JSON.stringify({ preguntas, respuestas, resultados, intentoId }));
 }
 
 function restaurarResultadoSesion() {
     const guardado = sessionStorage.getItem("rem_resultado_vocacional");
     if (!guardado) return false;
 
-    ({ modo, preguntas, respuestas, resultados, intentoId } = JSON.parse(guardado));
+    ({ preguntas, respuestas, resultados, intentoId } = JSON.parse(guardado));
     mostrarPantalla("resultados");
     pintarResultados();
     return true;
@@ -180,11 +180,9 @@ function areasDelInforme() {
 }
 
 function detalleDelInforme() {
-    const cuantas = modo === "premium" ? 3 : 1;
-
     return [{
-        titulo: cuantas > 1 ? "Tus áreas más afines" : "Tu área principal",
-        html: resultados.slice(0, cuantas).map(area =>
+        titulo: "Tus áreas más afines",
+        html: resultados.slice(0, TOP_AREAS).map(area =>
             `<p><strong>${area.nombre}</strong> — ${area.porcentaje}%<br>${area.texto}<br>
             <em>Carreras sugeridas: ${area.carreras.join(", ")}</em></p>`
         ).join("")
@@ -227,24 +225,25 @@ async function descargar() {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    $("btn_gratis").addEventListener("click", () => empezar("gratis"));
-    $("btn_premium").addEventListener("click", () => empezar("premium"));
     $("btn_anterior").addEventListener("click", anterior);
-    $("btn_activar").addEventListener("click", () => empezar("premium"));
+    $("btn_reintentar").addEventListener("click", empezar);
     $("btn_enviar").addEventListener("click", enviarPorCorreo);
     $("btn_descargar").addEventListener("click", descargar);
     $("btn_repetir").addEventListener("click", () => {
         sessionStorage.removeItem("rem_resultado_vocacional");
-        mostrarPantalla("intro");
+        empezar();
     });
 
+    // el resultado guardado solo se recupera al volver del login para
+    // enviar o descargar el informe; en cualquier otro caso es un test nuevo
     const parametros = new URLSearchParams(location.search);
+    const vuelveDelLogin = parametros.get("enviar") === "1" || parametros.get("descargar") === "1";
 
-    if (parametros.get("premium") === "1") {
-        sessionStorage.removeItem("rem_resultado_vocacional");
-        empezar("premium");
-    } else if (restaurarResultadoSesion()) {
+    if (vuelveDelLogin && restaurarResultadoSesion()) {
         if (parametros.get("enviar") === "1") enviarPorCorreo();
         if (parametros.get("descargar") === "1") descargar();
+    } else {
+        sessionStorage.removeItem("rem_resultado_vocacional");
+        empezar();
     }
 });

@@ -11,8 +11,7 @@ if (!$usuario) {
 $pdo = rem_obtener_bd();
 
 $stmt = $pdo->prepare(
-    "SELECT i.id, t.clave AS test_clave, t.nombre AS test_nombre, i.modo, i.total_preguntas,
-            i.correctas, i.porcentaje, i.puntaje_estimado, i.resumen, i.fecha
+    "SELECT i.id, t.nombre AS test_nombre, i.resumen, i.fecha
      FROM intentos i
      JOIN tests t ON t.id = i.test_id
      WHERE i.usuario_id = ?
@@ -22,7 +21,7 @@ $stmt->execute([$usuario['id']]);
 $intentos = $stmt->fetchAll();
 
 $stmtAreas = $pdo->prepare(
-    'SELECT area_clave, area_nombre, porcentaje, correctas, total FROM resultados_areas WHERE intento_id = ? ORDER BY porcentaje DESC'
+    'SELECT area_nombre, porcentaje FROM resultados_areas WHERE intento_id = ? ORDER BY porcentaje DESC'
 );
 foreach ($intentos as &$intento) {
     $stmtAreas->execute([$intento['id']]);
@@ -30,10 +29,4 @@ foreach ($intentos as &$intento) {
 }
 unset($intento);
 
-$stmt = $pdo->prepare(
-    'SELECT t.clave AS test_clave FROM accesos_premium a JOIN tests t ON t.id = a.test_id WHERE a.usuario_id = ?'
-);
-$stmt->execute([$usuario['id']]);
-$premium = array_column($stmt->fetchAll(), 'test_clave');
-
-rem_responder(['exito' => true, 'usuario' => $usuario, 'premium' => $premium, 'intentos' => $intentos]);
+rem_responder(['exito' => true, 'usuario' => $usuario, 'intentos' => $intentos]);

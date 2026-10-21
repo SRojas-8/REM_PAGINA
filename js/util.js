@@ -1,14 +1,7 @@
 /* ============
    Ayudas que usan todas las páginas del sitio (test, cuenta,
-   login, registro, premium y el panel de administrador).
+   login y registro).
    ============= */
-
-window.REM_CONFIG = {
-    contacto: {
-        correo: "remuniversidades@gmail.com",
-        whatsapp: "573228540721"
-    }
-};
 
 function $(id) {
     return document.getElementById(id);
@@ -47,6 +40,15 @@ async function pedirApi(ruta, datos) {
         opciones.body = JSON.stringify(datos);
     }
     const respuesta = await fetch(`api/${ruta}`, opciones);
+    const cuerpo = await respuesta.json();
+    cuerpo.estado = respuesta.status;
+    return cuerpo;
+}
+
+// igual que pedirApi pero para enviar un formulario con archivos (FormData).
+// No se fija Content-Type: el navegador lo pone con el separador del archivo.
+async function pedirApiForm(ruta, formData) {
+    const respuesta = await fetch(`api/${ruta}`, { method: "POST", credentials: "include", body: formData });
     const cuerpo = await respuesta.json();
     cuerpo.estado = respuesta.status;
     return cuerpo;

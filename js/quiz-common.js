@@ -18,37 +18,9 @@ function colorPlano(color) {
     return COLORES[color] || "#377681";
 }
 
-
 /* ============
    INFORME
    ============= */
-
-/* versión en texto plano, la que se guarda en el asunto/cuerpo si algo falla */
-function textoInforme(titulo, usuario, encabezado, areas, extras) {
-    const lineas = [
-        `Informe — ${titulo}`,
-        "Red Educativa Medellín (REM)",
-        `Fecha: ${fechaDeHoy()}`,
-        `Nombre: ${usuario.nombre}`,
-        "",
-        encabezado,
-        "",
-        "Resultados por área:"
-    ];
-
-    areas.forEach(area => lineas.push(`- ${area.nombre}: ${area.porcentaje}%`));
-
-    if (extras) {
-        lineas.push("");
-        extras.forEach(linea => lineas.push(linea));
-    }
-
-    lineas.push("");
-    lineas.push("Explora más programas académicos en rem-universidades.co/pregrados.html");
-    lineas.push("REM — remuniversidades@gmail.com — (604) 4725811");
-
-    return lineas.join("\n");
-}
 
 /* versión en HTML, la que se descarga y la que se envía por correo;
    lleva los estilos adentro para que se vea igual en cualquier lado */
@@ -110,7 +82,6 @@ function descargarInforme(archivo, html) {
 async function enviarInformePorCorreo(asunto, html, intentoId) {
     return pedirApi("enviar-informe.php", { asunto, html, intentoId });
 }
-
 
 /* ============
    ANILLO DE RESULTADOS

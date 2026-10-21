@@ -8,7 +8,6 @@ const PAGINA = "test-admision.html";
 const SEGUNDOS_POR_PREGUNTA = 45;
 const LETRAS = ["A", "B", "C", "D"];
 
-let modo = "gratis";
 let preguntas = [];
 let actual = 0;
 let respuestas = {};
@@ -21,36 +20,44 @@ let seAcaboElTiempo = false;
 
 
 function mostrarPantalla(cual) {
-    $("pantalla_intro").style.display = cual === "intro" ? "" : "none";
     $("pantalla_test").style.display = cual === "test" ? "" : "none";
     $("pantalla_resultados").style.display = cual === "resultados" ? "" : "none";
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-async function empezar(nuevoModo) {
-    if (nuevoModo === "premium") {
-        const resultado = await pedirApi("preguntas-premium.php?test=admision");
-        if (!resultado.exito) {
-            if (resultado.estado === 401) {
-                location.href = `login.html?volver=${encodeURIComponent(PAGINA + "?premium=1")}`;
-            } else {
-                location.href = "premium.html?test=admision";
-            }
-            return;
-        }
-        preguntas = mezclar(resultado.preguntas).map(p => ({ ...p, opciones: mezclar(p.opciones) }));
-    } else {
-        preguntas = mezclar(REM_ADMISION.preguntas).map(p => ({ ...p, opciones: mezclar(p.opciones) }));
+async function empezar() {
+    clearInterval(reloj);
+    mostrarPantalla("test");
+    $("contador").textContent = "";
+    $("cronometro").textContent = "";
+    $("avance").style.width = "0%";
+    $("etiqueta_area").textContent = "";
+    $("lista_opciones").innerHTML = "";
+    $("btn_anterior").disabled = true;
+    $("btn_siguiente").disabled = true;
+    $("pregunta").textContent = "Cargando preguntas...";
+    $("btn_reintentar").style.display = "none";
+
+    let resultado;
+    try {
+        resultado = await pedirApi("preguntas.php?test=admision");
+    } catch (error) {
+        resultado = { exito: false };
     }
 
-    modo = nuevoModo;
+    if (!resultado.exito) {
+        $("pregunta").textContent = "No pudimos cargar las preguntas. Revisa tu conexión e intenta de nuevo.";
+        $("btn_reintentar").style.display = "";
+        return;
+    }
+
+    preguntas = mezclar(resultado.preguntas).map(p => ({ ...p, opciones: mezclar(p.opciones) }));
     actual = 0;
     respuestas = {};
     seAcaboElTiempo = false;
     totalSegundos = preguntas.length * SEGUNDOS_POR_PREGUNTA;
     segundos = totalSegundos;
 
-    mostrarPantalla("test");
     pintarPregunta();
     arrancarReloj();
 }
@@ -172,7 +179,6 @@ async function terminar() {
 
     const guardado = await pedirApi("guardar-intento.php", {
         test: "admision",
-        modo,
         totalPreguntas: preguntas.length,
         correctas: resultados.buenas,
         porcentaje: resultados.porcentaje,
@@ -220,8 +226,6 @@ function pintarResultados() {
     $("lista_revision").style.display = "none";
     $("btn_revision").textContent = "Ver revisión de respuestas ↓";
 
-    // el cuadro de premium solo tiene sentido si el simulacro se hizo gratis
-    $("bloque_premium").style.display = modo === "premium" ? "none" : "";
     $("aviso_informe").classList.remove("visible");
 }
 
@@ -233,14 +237,14 @@ function verRevision() {
 }
 
 function guardarResultadoSesion() {
-    sessionStorage.setItem("rem_resultado_admision", JSON.stringify({ modo, preguntas, respuestas, resultados, intentoId, seAcaboElTiempo }));
+    sessionStorage.setItem("rem_resultado_admision", JSON.stringify({ preguntas, respuestas, resultados, intentoId, seAcaboElTiempo }));
 }
 
 function restaurarResultadoSesion() {
     const guardado = sessionStorage.getItem("rem_resultado_admision");
     if (!guardado) return false;
 
-    ({ modo, preguntas, respuestas, resultados, intentoId, seAcaboElTiempo } = JSON.parse(guardado));
+    ({ preguntas, respuestas, resultados, intentoId, seAcaboElTiempo } = JSON.parse(guardado));
     mostrarPantalla("resultados");
     pintarResultados();
     return true;
@@ -320,26 +324,27 @@ async function descargar() {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    $("btn_gratis").addEventListener("click", () => empezar("gratis"));
-    $("btn_premium").addEventListener("click", () => empezar("premium"));
     $("btn_anterior").addEventListener("click", anterior);
     $("btn_siguiente").addEventListener("click", siguiente);
+    $("btn_reintentar").addEventListener("click", empezar);
     $("btn_revision").addEventListener("click", verRevision);
-    $("btn_activar").addEventListener("click", () => empezar("premium"));
     $("btn_enviar").addEventListener("click", enviarPorCorreo);
     $("btn_descargar").addEventListener("click", descargar);
     $("btn_repetir").addEventListener("click", () => {
         sessionStorage.removeItem("rem_resultado_admision");
-        mostrarPantalla("intro");
+        empezar();
     });
 
+    // el resultado guardado solo se recupera al volver del login para
+    // enviar o descargar el informe; en cualquier otro caso es un simulacro nuevo
     const parametros = new URLSearchParams(location.search);
+    const vuelveDelLogin = parametros.get("enviar") === "1" || parametros.get("descargar") === "1";
 
-    if (parametros.get("premium") === "1") {
-        sessionStorage.removeItem("rem_resultado_admision");
-        empezar("premium");
-    } else if (restaurarResultadoSesion()) {
+    if (vuelveDelLogin && restaurarResultadoSesion()) {
         if (parametros.get("enviar") === "1") enviarPorCorreo();
         if (parametros.get("descargar") === "1") descargar();
+    } else {
+        sessionStorage.removeItem("rem_resultado_admision");
+        empezar();
     }
 });

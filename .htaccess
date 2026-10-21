@@ -1,0 +1,8 @@
+# Cosas que nunca deben poder descargarse desde el navegador:
+# el repositorio git, y los archivos de base de datos, notas y scripts.
+
+RedirectMatch 403 "(^|/)\.git"
+
+<FilesMatch "\.(sql|md|bat|ps1)$">
+    Require all denied
+</FilesMatch>

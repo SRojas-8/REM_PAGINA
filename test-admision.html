@@ -9,7 +9,9 @@
 <body>
     <header class="header">
         <div class="logo">
-            <img src="img/comun/logoderem.png" alt="logo de red educativa medellín">
+            <a href="index.html" title="Ir al inicio">
+                <img src="img/comun/logoderem.png" alt="logo de red educativa medellín">
+            </a>
         </div>
         <nav class="navbar">
             <ul>
@@ -28,53 +30,17 @@
     <a class="volver_test" href="test.html">← Volver a Test</a>
 
     <main>
-        <section id="pantalla_intro">
-            <div class="intro_test">
-                <span class="etiqueta">SIMULACRO DE ADMISIÓN</span>
-                <h1>Practica como si fuera el examen real</h1>
-                <p>Preguntas de opción múltiple en las 5 competencias del examen: Matemáticas, Lectura Crítica, Ciencias Naturales, Sociales y Ciudadanas, e Inglés. Con cronómetro y puntaje estimado al final.</p>
-            </div>
-
-            <div class="planes">
-                <div class="plan">
-                    <div class="icono_plan"></div>
-                    <span class="tipo_plan">Gratis</span>
-                    <h2>Versión gratuita</h2>
-                    <ul>
-                        <li>20 preguntas · 15 minutos</li>
-                        <li>Puntaje estimado y por área</li>
-                        <li>Revisión completa de respuestas</li>
-                        <li>Informe por correo o descargable</li>
-                    </ul>
-                    <button type="button" class="btn_principal" id="btn_gratis">Comenzar simulacro gratuito</button>
-                </div>
-
-                <div class="plan premium">
-                    <span class="cinta">RECOMENDADO</span>
-                    <div class="icono_plan"></div>
-                    <span class="tipo_plan">Premium</span>
-                    <h2>Versión Premium</h2>
-                    <ul>
-                        <li>50 preguntas · ~38 minutos</li>
-                        <li>Puntaje estimado más confiable</li>
-                        <li>Revisión completa de respuestas</li>
-                        <li>Informe completo, descargable y por correo</li>
-                    </ul>
-                    <button type="button" class="btn_principal" id="btn_premium">Comenzar simulacro Premium </button>
-                </div>
-            </div>
-        </section>
-
-        <section id="pantalla_test" style="display:none;">
+        <section id="pantalla_test">
             <div class="caja_test">
                 <div class="barra_test">
-                    <span class="contador" id="contador">Pregunta 1 de 20</span>
-                    <span class="cronometro" id="cronometro"> 15:00</span>
+                    <span class="contador" id="contador"></span>
+                    <span class="cronometro" id="cronometro"></span>
                 </div>
                 <div class="barra_avance"><div class="avance" id="avance"></div></div>
 
-                <span class="etiqueta_area" id="etiqueta_area">Matemáticas</span>
-                <p class="pregunta" id="pregunta">Cargando pregunta...</p>
+                <span class="etiqueta_area" id="etiqueta_area"></span>
+                <p class="pregunta" id="pregunta">Cargando preguntas...</p>
+                <button type="button" class="btn_principal" id="btn_reintentar" style="display:none;">Reintentar</button>
 
                 <div class="lista_opciones" id="lista_opciones"></div>
 
@@ -113,15 +79,6 @@
                         <button type="button" class="btn_borde" id="btn_revision">Ver revisión de respuestas ↓</button>
                     </div>
                     <div class="lista_revision" id="lista_revision"></div>
-                </div>
-
-                <div class="cuadro_premium" id="bloque_premium" style="display:none;">
-                    <div class="icono_premium"></div>
-                    <div class="texto_premium">
-                        <h3>¿Quieres el simulacro completo?</h3>
-                        <p>La versión Premium tiene 50 preguntas en las 5 competencias, más tiempo de práctica y un puntaje estimado más confiable.</p>
-                    </div>
-                    <button type="button" class="btn_principal" id="btn_activar">Desbloquear Premium</button>
                 </div>
 
                 <div class="cuadro_informe">

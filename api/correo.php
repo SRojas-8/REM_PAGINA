@@ -1,9 +1,6 @@
 <?php
 /* =========================================================
    CORREO.PHP — Envío de correos desde remuniversidades@gmail.com
-   Usa PHPMailer (ver api/PHPMailer/LEEME.txt para instalarlo).
-   Cada envío queda registrado en informes_enviados para poder
-   revisar después si algo falló.
    ========================================================= */
 
 require_once __DIR__ . '/sesion.php';
@@ -60,7 +57,6 @@ function rem_enviar_correo(string $para, string $asunto, string $htmlBody, array
             $error,
         ]);
     } catch (PDOException $e) {
-        // no se pudo dejar el registro, pero no bloqueamos el envío por esto
     }
 
     return $exito;

@@ -55,6 +55,10 @@ body {
     transform: scale(1.05);
 }
 
+.logo a {
+    display: block;
+}
+
 .navbar {
     display: flex;
     align-items: center;
@@ -601,136 +605,15 @@ body {
     margin: 22px 0 0 6%;
     font-size: 0.9rem;
     font-weight: 700;
-    color: var(--celeste);
+    color: var(--light);
     text-decoration: none;
+    background: var(--celeste);
+    padding: 10px 22px;
+    border-radius: 999px;
 }
 
 .volver_test:hover {
-    text-decoration: underline;
-}
-
-.intro_test {
-    padding: 26px 8% 46px;
-    text-align: center;
-}
-
-.intro_test .etiqueta {
-    display: inline-block;
-    background: var(--cian);
-    color: var(--celeste);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    padding: 7px 16px;
-    border-radius: 999px;
-    margin-bottom: 16px;
-}
-
-.intro_test h1 {
-    font-size: 2.4rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-}
-
-.intro_test p {
-    font-size: 1.05rem;
-    max-width: 620px;
-    margin: 0 auto;
-    color: #333;
-}
-
-.planes {
-    display: flex;
-    gap: 28px;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 1080px;
-    margin: 44px auto 0;
-    padding: 0 6% 70px;
-}
-
-.plan {
-    background: var(--light);
-    border-radius: 26px;
-    padding: 34px 30px;
-    flex: 1 1 340px;
-    max-width: 400px;
-    box-shadow: 0 6px 22px var(--celeste_apagado);
-    border: 2px solid transparent;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    position: relative;
-}
-
-.plan.premium {
-    border-color: var(--celeste);
-}
-
-.plan .cinta {
-    position: absolute;
-    top: -14px;
-    right: 26px;
-    background: var(--celeste);
-    color: var(--light);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    padding: 7px 15px;
-    border-radius: 999px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.plan .icono_plan {
-    font-size: 2.2rem;
-    line-height: 1;
-}
-
-.plan h2 {
-    font-size: 1.35rem;
-    font-weight: 800;
-}
-
-.plan .tipo_plan {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--celeste_apagado);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-}
-
-.plan ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-    font-size: 0.9rem;
-    margin: 4px 0 8px;
-    flex: 1;
-}
-
-.plan ul li {
-    padding-left: 22px;
-    position: relative;
-    line-height: 1.4;
-}
-
-.plan ul li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--verde_apagado);
-    font-weight: 800;
-}
-
-.plan.premium ul li::before {
-    color: var(--celeste);
-}
-
-.plan .btn_principal,
-.plan .btn_borde {
-    width: 100%;
-    text-align: center;
+    background: var(--verde_apagado);
 }
 
 .caja_test {
@@ -1204,37 +1087,6 @@ body {
     font-weight: 700;
 }
 
-.cuadro_premium {
-    background: var(--cian_claro);
-    border-radius: 24px;
-    padding: 32px 36px;
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    flex-wrap: wrap;
-}
-
-.cuadro_premium .icono_premium {
-    font-size: 2.6rem;
-    flex-shrink: 0;
-}
-
-.texto_premium {
-    flex: 1;
-    min-width: 220px;
-}
-
-.texto_premium h3 {
-    font-size: 1.15rem;
-    font-weight: 800;
-    margin-bottom: 6px;
-}
-
-.texto_premium p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
 .cuadro_informe {
     background: var(--light);
     border-radius: 24px;
@@ -1416,13 +1268,13 @@ body {
     object-fit: contain;
 }
 
-.paso_beca h3 {
+.paso_beca h1 {
     font-size: 0.95rem;
     font-weight: 800;
 }
 
 .paso_beca p {
-    font-size: 0.78rem;
+    font-size: 18px;
     color: #555;
     line-height: 1.4;
 }
@@ -1980,10 +1832,16 @@ body {
 }
 
 /* ==========================================================================
-   CUENTA, LOGIN, REGISTRO, PREMIUM Y ADMIN
+   CUENTA, LOGIN Y REGISTRO
    ========================================================================== */
 
-.fondooo {
+/* el fondo va en una capa fija del tamaño de la ventana: así la foto no se
+   estira cuando la página es larga (historial grande, lista de universidades) */
+.fondooo::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
     background: url(../img/comun/graduados.jpeg) center/cover no-repeat;
 }
 
@@ -2073,16 +1931,7 @@ body {
     font-weight: 800;
 }
 
-/* -- Modales / formularios (login, registro, mi cuenta, premium) -- */
-
-.etiqueta_modal {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--celeste);
-    margin-bottom: 8px;
-}
+/* -- Modales / formularios (login, registro, mi cuenta) -- */
 
 .campo_modal {
     margin-bottom: 16px;
@@ -2129,39 +1978,6 @@ body {
     text-align: center;
 }
 
-.link_whatsapp {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 16px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--verde_apagado);
-    text-decoration: none;
-    justify-content: center;
-}
-
-.link_whatsapp:hover {
-    text-decoration: underline;
-}
-
-.separador_modal {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 20px 0;
-    font-size: 0.75rem;
-    color: #999;
-}
-
-.separador_modal::before,
-.separador_modal::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--gris_claro);
-}
-
 /* -- Mi cuenta -- */
 
 .resumen_cuenta {
@@ -2185,6 +2001,17 @@ body {
 .resumen_cuenta p {
     font-size: 0.85rem;
     opacity: 0.9;
+}
+
+.resumen_cuenta #btn_cerrar_sesion {
+    background: var(--light);
+    border-color: var(--light);
+    color: var(--celeste);
+}
+
+.resumen_cuenta #btn_cerrar_sesion:hover {
+    background: var(--cian_claro);
+    border-color: var(--cian_claro);
 }
 
 .historial {
@@ -2227,21 +2054,6 @@ body {
     color: #999;
 }
 
-.etiqueta_modo {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 999px;
-    background: var(--cian_claro);
-    color: var(--celeste);
-}
-
-.etiqueta_modo.premium {
-    background: #fff4d6;
-    color: #9a7300;
-}
-
 .areas_historial {
     font-size: 0.82rem;
     color: #555;
@@ -2265,70 +2077,16 @@ body {
     flex-wrap: wrap;
 }
 
-/* -- Pago premium -- */
+/* -- Rol de la cuenta -- */
 
-.caja_pago {
+.etiqueta_modo {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
     background: var(--cian_claro);
-    border-radius: 20px;
-    padding: 22px 24px;
-    margin: 22px 0;
-}
-
-.dato_pago {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px dashed var(--celeste_apagadito);
-    font-size: 0.92rem;
-}
-
-.dato_pago:last-child {
-    border-bottom: none;
-}
-
-.dato_pago strong {
-    font-weight: 800;
-}
-
-/* -- Panel de administrador -- */
-
-.tabla_solicitudes {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.fila_solicitud {
-    border: 1px solid var(--gris_clarito);
-    border-radius: 16px;
-    padding: 18px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.fila_solicitud h4 {
-    font-size: 0.98rem;
-    font-weight: 800;
-    margin-bottom: 4px;
-}
-
-.fila_solicitud p {
-    font-size: 0.82rem;
-    color: #666;
-}
-
-.acciones_solicitud {
-    display: flex;
-    gap: 10px;
-}
-
-.nota_admin {
-    font-size: 0.82rem;
-    color: #777;
-    margin-bottom: 16px;
+    color: var(--celeste);
 }
 
 #etiqueta_admin {
@@ -2336,22 +2094,218 @@ body {
     margin-top: 10px;
 }
 
-#titulo_procesadas {
-    font-size: 0.9rem;
-    font-weight: 800;
+/* -- Eliminar cuenta -- */
+
+.nota_cuenta {
+    font-size: 0.82rem;
     color: #777;
-    margin: 24px 0 12px;
+    margin-bottom: 16px;
 }
 
-.fila_solicitud.procesada {
-    opacity: 0.65;
-    padding: 14px 20px;
+/* -- Herramientas de administrador -- */
+
+
+
+.herramientas_admin {
+    margin-bottom: 20px;
+}
+
+.tarjeta_herramienta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    background: var(--cian_claro);
+    border: 2px solid var(--cian);
+    border-radius: 18px;
+    padding: 20px 24px;
+    color: var(--dark);
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta_herramienta:hover,
+.tarjeta_herramienta:focus-visible {
+    border-color: var(--celeste);
+    box-shadow: 0 4px 14px rgba(55, 118, 129, 0.18);
+    outline: none;
+}
+
+.texto_herramienta {
+    flex: 1;
+    min-width: 220px;
+}
+
+.texto_herramienta strong {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.texto_herramienta span {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #444;
+}
+
+.accion_herramienta {
+    background: var(--celeste);
+    color: var(--light);
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+.cabeza_admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.form_universidad {
+    background: var(--gris_clarito);
+    border-radius: 18px;
+    padding: 22px 24px;
+    margin-bottom: 22px;
+}
+
+.form_universidad h4 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.vista_escudo {
+    display: block;
+    max-width: 120px;
+    max-height: 90px;
+    object-fit: contain;
+    margin-top: 10px;
+}
+
+.fila_universidad {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    border-bottom: 1px solid var(--gris_clarito);
+    padding: 14px 0;
+}
+
+.fila_universidad.oculta {
+    opacity: 0.55;
+}
+
+.mini_escudo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.datos_universidad {
+    flex: 1;
+    min-width: 180px;
+}
+
+.datos_universidad h4 {
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+
+.estado_universidad {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--celeste);
+}
+
+.acciones_universidad {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.btn_mini {
+    background: transparent;
+    border: 2px solid var(--celeste);
+    color: var(--celeste);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.btn_mini:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.btn_mini.peligro {
+    border-color: #a83c3c;
+    color: #a83c3c;
 }
 
 /* ==========================================================================
    RESPONSIVE
    (de mayor a menor ancho de pantalla)
    ========================================================================== */
+
+/* Inicio: la columna del video mide lo que mide el propio video (768 px) y
+   desde 1100 px hacia abajo ya no cabe, así que se pasa a una sola columna.
+   Nada de este bloque se aplica a pantallas de más de 1100 px. */
+@media screen and (max-width: 1100px) {
+    .main {
+        grid-template-columns: minmax(0, 1fr);
+        height: auto;
+        padding-bottom: 30px;
+    }
+
+    .main_texto {
+        text-align: center;
+        padding-top: 30px;
+    }
+
+    .main_texto h1 {
+        padding-left: 0;
+    }
+
+    .simplifica {
+        padding-left: 0;
+        display: block;
+        margin-top: 10px;
+    }
+
+    .video-principal {
+        grid-column: 1;
+        grid-row: auto;
+        height: 320px;
+        border-radius: 20px;
+        margin-top: 24px;
+    }
+
+    .video-principal video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: inherit;
+    }
+
+    .cuadros {
+        grid-row: auto;
+        margin-top: 20px;
+    }
+}
 
 @media screen and (max-width: 900px) {
     .main_texto h1 {
@@ -2363,13 +2317,25 @@ body {
         margin-top: 20px;
     }
 
+    /* becas: pasos en 2 columnas, sin flechas (el número ya marca el orden) */
     .fila_pasos {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px 16px;
     }
 
     .paso_flecha {
-        transform: rotate(90deg);
-        margin: 0;
+        display: none;
+    }
+
+    .paso_beca {
+        width: auto;
+    }
+
+    .paso_beca:last-child {
+        grid-column: 1 / -1;
+        justify-self: center;
+        max-width: 340px;
     }
 
     .banner_icfes {
@@ -2432,18 +2398,10 @@ body {
     }
 
     .cuadro_resultado,
-    .cuadro_informe,
-    .cuadro_premium {
+    .cuadro_informe {
         padding: 26px 24px;
     }
 
-    .planes {
-        margin-top: 30px;
-    }
-
-    .intro_test h1 {
-        font-size: 1.9rem;
-    }
 }
 
 @media screen and (max-width: 650px) {
@@ -2484,51 +2442,41 @@ body {
         margin-left: 0;
     }
 
-    /* inicio */
-    .main {
-        grid-template-columns: 1fr;
-        height: auto;
-        padding-bottom: 30px;
-    }
-
-    .main_texto {
-        text-align: center;
-        padding-top: 30px;
-    }
-
+    /* inicio (lo demás está en el bloque de 1100 px) */
     .main_texto h1 {
         font-size: 1.7rem;
-        padding-left: 0;
     }
 
-    .simplifica {
-        padding-left: 0;
-        display: block;
-        margin-top: 10px;
+    .main_texto h1 br {
+        display: none;
     }
 
     .video-principal {
-        grid-column: 1;
-        grid-row: auto;
         height: 220px;
-        border-radius: 20px;
-        margin-top: 24px;
     }
 
-    .cuadros {
-        grid-row: auto;
-    }
-
-    /* nosotros */
+    /* nosotros: en una columna todo, también los títulos y los textos,
+       que en pantalla grande se colocan en la columna 2 con márgenes negativos */
     .mision,
     .vision {
         grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        margin-top: 0;
     }
 
+    .mision h2,
+    .mision p,
+    .vision h2,
+    .vision p,
     .imagen_misi,
     .imagen_visi {
         grid-column: 1;
         grid-row: auto;
+    }
+
+    .mision p,
+    .vision p {
+        margin-top: 0;
     }
 
     /* cuenta */
@@ -2548,6 +2496,57 @@ body {
 }
 
 @media screen and (max-width: 600px) {
+    /* becas: cada paso es una tarjeta compacta en fila (icono a la izquierda, texto a la derecha) */
+    .fila_pasos {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .paso_beca,
+    .paso_beca:last-child {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        grid-template-areas: "icono titulo" "icono texto";
+        column-gap: 14px;
+        row-gap: 2px;
+        align-items: center;
+        justify-self: stretch;
+        max-width: none;
+        text-align: left;
+        position: relative;
+        background: var(--light);
+        border-radius: 16px;
+        padding: 14px 16px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    .paso_numero {
+        position: absolute;
+        top: -8px;
+        left: -6px;
+        width: 26px;
+        height: 26px;
+        font-size: 0.78rem;
+    }
+
+    .paso_icono {
+        grid-area: icono;
+        width: 56px;
+        height: 56px;
+    }
+
+    .paso_beca h3 {
+        grid-area: titulo;
+        align-self: end;
+        font-size: 1rem;
+    }
+
+    .paso_beca p {
+        grid-area: texto;
+        align-self: start;
+        font-size: 0.9rem;
+    }
+
     .test-card {
         flex-direction: column;
     }
