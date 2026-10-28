@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         zona.innerHTML = resultado.universidades.map(u => `
             <div class="card">
                 <div class="logo-card">
-                    <img src="img/imgpregrados/Unis/${encodeURIComponent(u.escudo)}" alt="escudo ${limpiar(u.nombre)}">
+                    <img src="img/imgeducacion/Unis/${encodeURIComponent(u.escudo)}" alt="escudo ${limpiar(u.nombre)}">
                 </div>
                 <div class="info">
-                    <h2>Conoce la oferta académica en pregrados de la ${limpiar(u.nombre)}</h2>
+                    <h2>${u.texto_oferta ? limpiar(u.texto_oferta) : `Conoce la oferta académica en pregrados de la ${limpiar(u.nombre)}`}</h2>
                     <a href="${limpiar(u.url_oferta)}" target="_blank" rel="noopener">Leer más...</a>
                 </div>
             </div>

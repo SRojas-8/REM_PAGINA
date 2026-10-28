@@ -329,10 +329,10 @@ body {
 }
 
 /* ==========================================================================
-   PREGRADOS (pregrados.html)
+   EDUCACIÓN (educacion.html)
    ========================================================================== */
 
-.bg-pregrados {
+.bg-educacion {
     background-color: #92c1ca;
     background-size: contain;
     background-position: center;
@@ -347,6 +347,11 @@ body {
     gap: 30px;
     width: 90%;
     margin: 30px auto 20px auto;
+}
+
+.card-zone::after {
+    content: "";
+    width: 430px;
 }
 
 .cargando_universidades {
@@ -1299,19 +1304,102 @@ body {
     margin-bottom: 30px;
 }
 
-.fila_destacadas {
+.carrusel_becas {
+    --por_vista: 4;
+    --indice: 0;
+    --separacion: 26px;
+    position: relative;
+}
+
+.ventana_becas {
+    overflow: hidden;
+    padding: 8px 4px 22px;
+    touch-action: pan-y;
+}
+
+.pista_becas {
     display: flex;
-    flex-wrap: wrap;
+    gap: var(--separacion);
+    transform: translateX(calc(var(--indice) * -1 * (100% + var(--separacion)) / var(--por_vista)));
+    transition: transform 0.55s ease;
+}
+
+.flecha_carrusel {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 42px;
+    height: 42px;
+    margin-top: -33px;
+    border: none;
+    border-radius: 50%;
+    background: var(--celeste);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.flecha_carrusel::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff;
+}
+
+.flecha_anterior {
+    left: -16px;
+}
+
+.flecha_anterior::before {
+    transform: translate(-30%, -50%) rotate(-135deg);
+}
+
+.flecha_siguiente {
+    right: -16px;
+}
+
+.flecha_siguiente::before {
+    transform: translate(-70%, -50%) rotate(45deg);
+}
+
+.flecha_carrusel:hover,
+.flecha_carrusel:focus-visible {
+    background: var(--verde_apagado);
+}
+
+.puntos_becas {
+    display: flex;
     justify-content: center;
-    gap: 26px;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.punto_beca {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--celeste_apagado);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.punto_beca[aria-current="true"] {
+    background: var(--celeste);
+    transform: scale(1.25);
 }
 
 .tarjeta_beca {
     background: var(--gris_clarito);
     border-radius: 20px;
     padding: 28px;
-    flex: 1 1 270px;
-    max-width: 310px;
+    flex: 0 0 calc((100% - (var(--por_vista) - 1) * var(--separacion)) / var(--por_vista));
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -1328,6 +1416,10 @@ body {
     width: 200px;
     height: 200px;
     object-fit: contain;
+}
+
+.logo_beca_ajustada img {
+    height: 80px;
 }
 
 .tarjeta_beca > h3 {
@@ -1371,7 +1463,8 @@ body {
     padding-top: 10px;
 }
 
-.etiqueta_publica {
+.etiqueta_publica,
+.etiqueta_privada {
     background: var(--cian);
     color: var(--celeste);
     font-size: 0.7rem;

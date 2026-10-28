@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Becas - Red Educativa Medellín</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/styles.css?v=20261028b">
 </head>
 <body>
     <header class="header">
@@ -18,7 +18,7 @@
                 <li><a href="index.html">INICIO</a></li>
                 <li><a href="test.html">TEST</a></li>
                 <li><a href="becas.html" class="active">BECAS</a></li>
-                <li><a href="pregrados.html">PREGRADOS</a></li>
+                <li><a href="educacion.html">EDUCACIÓN</a></li>
                 <li><a href="nosotros.html">NOSOTROS</a></li>
             </ul>
         </nav>
@@ -97,109 +97,216 @@
 
         <section class="destacadas_becas">
             <h2> Becas destacadas</h2>
-            <div class="fila_destacadas">
+            <div class="carrusel_becas" role="region" aria-roledescription="carrusel" aria-label="Becas destacadas">
+                <button type="button" class="flecha_carrusel flecha_anterior" aria-label="Ver becas anteriores"></button>
+                <div class="ventana_becas">
+                    <div class="pista_becas">
 
-                <div class="tarjeta_beca">
-                    <div class="logo_beca"><img src="img/imgbecas/logo_sapi-1.png" alt="Sapiencia"></div>
-                    <h3>Matrícula Cero</h3>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/documento.png" alt="">
-                        <div><strong>Entidad</strong><span>Sapiencia / Alcaldía de Medellín</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/gorro_azul.png" alt="">
-                        <div><strong>Nivel Educativo</strong><span>Técnica, tecnología y profesional</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/mano_corazon.png" alt="">
-                        <div><strong>Beneficio</strong><span>Pago de matrícula</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/persona.png" alt="">
-                        <div><strong>Dirigida a</strong><span>Estudiantes que cumplan los requisitos del programa</span></div>
-                    </div>
-                    <div class="pie_tarjeta_beca">
-                        <span class="etiqueta_publica">Pública</span>
-                        <a href="https://sapiencia.gov.co/" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
+                        <div class="tarjeta_beca">
+                            <div class="logo_beca"><img src="img/imgbecas/logo_sapi-1.png" alt="Sapiencia"></div>
+                            <h3>Matrícula Cero</h3>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/documento.png" alt="">
+                                <div><strong>Entidad</strong><span>Sapiencia / Alcaldía de Medellín</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/gorro_azul.png" alt="">
+                                <div><strong>Nivel Educativo</strong><span>Técnica, tecnología y profesional</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/mano_corazon.png" alt="">
+                                <div><strong>Beneficio</strong><span>Pago de matrícula</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/persona.png" alt="">
+                                <div><strong>Dirigida a</strong><span>Estudiantes que cumplan los requisitos del programa</span></div>
+                            </div>
+                            <div class="pie_tarjeta_beca">
+                                <span class="etiqueta_publica">Pública</span>
+                                <a href="https://sapiencia.gov.co/" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
+                            </div>
+                        </div>
+
+                        <div class="tarjeta_beca">
+                            <div class="logo_beca"><img src="img/imgbecas/logo_itm-1.png" alt="ITM"></div>
+                            <h3>Becas y beneficios del ITM</h3>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/documento.png" alt="">
+                                <div><strong>Entidad</strong><span>Instituto Tecnológico Metropolitano</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/gorro_azul.png" alt="">
+                                <div><strong>Nivel Educativo</strong><span>Técnica, tecnológica y profesional</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/mano_corazon.png" alt="">
+                                <div><strong>Beneficio</strong><span>Becas, descuentos y otros apoyos</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/persona.png" alt="">
+                                <div><strong>Dirigida a</strong><span>Estudiantes que cumplan los requisitos de cada programa</span></div>
+                            </div>
+                            <div class="pie_tarjeta_beca">
+                                <span class="etiqueta_publica">Pública</span>
+                                <a href="https://www.itm.edu.co/matricula-cero/politica-de-gratuidad/" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
+                            </div>
+                        </div>
+
+                        <div class="tarjeta_beca">
+                            <div class="logo_beca"><img src="img/imgbecas/logo_fraternidad-1.png" alt="Fundación Fraternidad Medellín"></div>
+                            <h3>Becas de la Fundación Fraternidad Medellín</h3>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/documento.png" alt="">
+                                <div><strong>Entidad</strong><span>Fundación Fraternidad Medellín</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/gorro_azul.png" alt="">
+                                <div><strong>Nivel Educativo</strong><span>Técnica, tecnológica y universitaria</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/mano_corazon.png" alt="">
+                                <div><strong>Beneficio</strong><span>Matrícula y/o manutención, según convocatoria</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/persona.png" alt="">
+                                <div><strong>Dirigida a</strong><span>Jóvenes que cumplan las condiciones establecidas</span></div>
+                            </div>
+                            <div class="pie_tarjeta_beca">
+                                <span class="etiqueta_publica">Pública</span>
+                                <a href="https://fraternidadmedellin.org/educacion-superior/becas/" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
+                            </div>
+                        </div>
+
+                        <div class="tarjeta_beca">
+                            <div class="logo_beca"><img src="img/imgbecas/logo_udea-1.png" alt="Universidad de Antioquia"></div>
+                            <h3>Becas y apoyos de la Universidad de Antioquia</h3>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/documento.png" alt="">
+                                <div><strong>Entidad</strong><span>Universidad de Antioquia</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/gorro_azul.png" alt="">
+                                <div><strong>Nivel Educativo</strong><span>Pregrados y otros niveles según programa</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/mano_corazon.png" alt="">
+                                <div><strong>Beneficio</strong><span>Apoyos económicos y académicos</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/persona.png" alt="">
+                                <div><strong>Dirigida a</strong><span>Estudiantes de la institución que cumplan los requisitos</span></div>
+                            </div>
+                            <div class="pie_tarjeta_beca">
+                                <span class="etiqueta_publica">Pública</span>
+                                <a href="https://www.udea.edu.co/wps/portal/udea/web/inicio/internacional/tramites/apoyos-economicos" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
+                            </div>
+                        </div>
+
+                        <div class="tarjeta_beca">
+                            <div class="logo_beca"><img src="img/imgbecas/logo_icetex.png" alt="ICETEX"></div>
+                            <h3>Créditos educativos ICETEX</h3>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/documento.png" alt="">
+                                <div><strong>Entidad</strong><span>ICETEX (entidad del Estado)</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/gorro_azul.png" alt="">
+                                <div><strong>Nivel Educativo</strong><span>Pregrado y posgrado</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/mano_corazon.png" alt="">
+                                <div><strong>Beneficio</strong><span>Crédito para financiar tus estudios, con condiciones según la línea</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/persona.png" alt="">
+                                <div><strong>Dirigida a</strong><span>Aspirantes y estudiantes que cumplan los requisitos de cada línea de crédito</span></div>
+                            </div>
+                            <div class="pie_tarjeta_beca">
+                                <span class="etiqueta_publica">Pública</span>
+                                <a href="https://web.icetex.gov.co/creditos" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
+                            </div>
+                        </div>
+
+                        <div class="tarjeta_beca">
+                            <div class="logo_beca logo_beca_ajustada"><img src="img/imgbecas/logo_fondofuturo.png" alt="Fondo Futuro"></div>
+                            <h3>Fondo Futuro</h3>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/documento.png" alt="">
+                                <div><strong>Entidad</strong><span>CES, EIA, EAFIT, UPB y Universidad de Medellín</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/gorro_azul.png" alt="">
+                                <div><strong>Nivel Educativo</strong><span>Pregrado</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/mano_corazon.png" alt="">
+                                <div><strong>Beneficio</strong><span>Financiación de la matrícula: pagas el 30 % por semestre y el resto sin intereses mientras estudias</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/persona.png" alt="">
+                                <div><strong>Dirigida a</strong><span>Estudiantes admitidos en pregrado en esas universidades</span></div>
+                            </div>
+                            <div class="pie_tarjeta_beca">
+                                <span class="etiqueta_privada">Privada</span>
+                                <a href="https://fondofuturo.co/" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
+                            </div>
+                        </div>
+
+                        <div class="tarjeta_beca">
+                            <div class="logo_beca"><img src="img/imgbecas/logo_comfama.svg" alt="Comfama"></div>
+                            <h3>Becas y crédito educativo de Comfama</h3>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/documento.png" alt="">
+                                <div><strong>Entidad</strong><span>Comfama</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/gorro_azul.png" alt="">
+                                <div><strong>Nivel Educativo</strong><span>Técnica, tecnológica y educación formal</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/mano_corazon.png" alt="">
+                                <div><strong>Beneficio</strong><span>Becas del 50 % al 70 % de la matrícula y crédito educativo con subsidio en la tasa</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/persona.png" alt="">
+                                <div><strong>Dirigida a</strong><span>Afiliados a Comfama de categorías A y B</span></div>
+                            </div>
+                            <div class="pie_tarjeta_beca">
+                                <span class="etiqueta_privada">Privada</span>
+                                <a href="https://www.comfama.com/aprendizaje/oferta-becas/" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
+                            </div>
+                        </div>
+
+                        <div class="tarjeta_beca">
+                            <div class="logo_beca"><img src="img/imgbecas/logo_eafit.svg" alt="Universidad EAFIT"></div>
+                            <h3>Becas Talento EAFIT</h3>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/documento.png" alt="">
+                                <div><strong>Entidad</strong><span>Universidad EAFIT</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/gorro_azul.png" alt="">
+                                <div><strong>Nivel Educativo</strong><span>Pregrado</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/mano_corazon.png" alt="">
+                                <div><strong>Beneficio</strong><span>Del 40 % al 100 % del valor de la matrícula</span></div>
+                            </div>
+                            <div class="dato_beca">
+                                <img src="img/imgbecas/persona.png" alt="">
+                                <div><strong>Dirigida a</strong><span>Bachilleres de estratos 1 a 4 con 300 puntos o más en Saber 11</span></div>
+                            </div>
+                            <div class="pie_tarjeta_beca">
+                                <span class="etiqueta_privada">Privada</span>
+                                <a href="https://www.eafit.edu.co/becas-y-financiacion/becas-talento-eafit" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
-                <div class="tarjeta_beca">
-                    <div class="logo_beca"><img src="img/imgbecas/logo_itm-1.png" alt="ITM"></div>
-                    <h3>Becas y beneficios del ITM</h3>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/documento.png" alt="">
-                        <div><strong>Entidad</strong><span>Instituto Tecnológico Metropolitano</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/gorro_azul.png" alt="">
-                        <div><strong>Nivel Educativo</strong><span>Técnica, tecnológica y profesional</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/mano_corazon.png" alt="">
-                        <div><strong>Beneficio</strong><span>Becas, descuentos y otros apoyos</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/persona.png" alt="">
-                        <div><strong>Dirigida a</strong><span>Estudiantes que cumplan los requisitos de cada programa</span></div>
-                    </div>
-                    <div class="pie_tarjeta_beca">
-                        <span class="etiqueta_publica">Pública</span>
-                        <a href="https://www.itm.edu.co/matricula-cero/politica-de-gratuidad/" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta_beca">
-                    <div class="logo_beca"><img src="img/imgbecas/logo_fraternidad-1.png" alt="Fundación Fraternidad Medellín"></div>
-                    <h3>Becas de la Fundación Fraternidad Medellín</h3>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/documento.png" alt="">
-                        <div><strong>Entidad</strong><span>Fundación Fraternidad Medellín</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/gorro_azul.png" alt="">
-                        <div><strong>Nivel Educativo</strong><span>Técnica, tecnológica y universitaria</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/mano_corazon.png" alt="">
-                        <div><strong>Beneficio</strong><span>Matrícula y/o manutención, según convocatoria</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/persona.png" alt="">
-                        <div><strong>Dirigida a</strong><span>Jóvenes que cumplan las condiciones establecidas</span></div>
-                    </div>
-                    <div class="pie_tarjeta_beca">
-                        <span class="etiqueta_publica">Pública</span>
-                        <a href="https://fraternidadmedellin.org/educacion-superior/becas/" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta_beca">
-                    <div class="logo_beca"><img src="img/imgbecas/logo_udea-1.png" alt="Universidad de Antioquia"></div>
-                    <h3>Becas y apoyos de la Universidad de Antioquia</h3>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/documento.png" alt="">
-                        <div><strong>Entidad</strong><span>Universidad de Antioquia</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/gorro_azul.png" alt="">
-                        <div><strong>Nivel Educativo</strong><span>Pregrados y otros niveles según programa</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/mano_corazon.png" alt="">
-                        <div><strong>Beneficio</strong><span>Apoyos económicos y académicos</span></div>
-                    </div>
-                    <div class="dato_beca">
-                        <img src="img/imgbecas/persona.png" alt="">
-                        <div><strong>Dirigida a</strong><span>Estudiantes de la institución que cumplan los requisitos</span></div>
-                    </div>
-                    <div class="pie_tarjeta_beca">
-                        <span class="etiqueta_publica">Pública</span>
-                        <a href="https://www.udea.edu.co/wps/portal/udea/web/inicio/internacional/tramites/apoyos-economicos" target="_blank" rel="noopener" class="btn_ver_beca">Ver beca →</a>
-                    </div>
-                </div>
-
+                <button type="button" class="flecha_carrusel flecha_siguiente" aria-label="Ver más becas"></button>
             </div>
+            <div class="puntos_becas"></div>
         </section>
 
         <section class="entidades_becas">
@@ -287,5 +394,6 @@
 
     <script src="js/util.js"></script>
     <script src="js/sesion.js"></script>
+    <script src="js/becas.js?v=20261028b"></script>
 </body>
 </html>

@@ -1,10 +1,10 @@
 /* ============
-   PANEL DE ADMINISTRADOR — universidades de Pregrados
+   PANEL DE ADMINISTRADOR — universidades de Educación
    El servidor vuelve a comprobar que seas admin en cada llamada;
    aquí solo se decide qué se muestra.
    ============= */
 
-const CARPETA_ESCUDOS = "img/imgpregrados/Unis/";
+const CARPETA_ESCUDOS = "img/imgeducacion/Unis/";
 const TAMANO_MAX_ESCUDO = 1024 * 1024;
 const TIPOS_ESCUDO = ["image/png", "image/jpeg", "image/webp"];
 
@@ -127,7 +127,7 @@ function alHacerClicEnLista(e) {
     } else if (accion === "editar") {
         abrirFormulario(universidad);
     } else if (accion === "eliminar") {
-        if (confirm(`¿Eliminar "${universidad.nombre}"? Dejará de aparecer en Pregrados y no se puede deshacer.\n\nSi solo quieres que no se vea por ahora, usa "Ocultar".`)) {
+        if (confirm(`¿Eliminar "${universidad.nombre}"? Dejará de aparecer en Educación y no se puede deshacer.\n\nSi solo quieres que no se vea por ahora, usa "Ocultar".`)) {
             ejecutar({ accion: "eliminar", id }).then(r => { if (r) avisar("Universidad eliminada."); });
         }
     }

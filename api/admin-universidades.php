@@ -1,6 +1,6 @@
 <?php
 // panel de administrador: crear, editar, ordenar, ocultar y eliminar
-// las universidades de pregrados.html. Solo cuentas con rol 'admin';
+// las universidades de educacion.html. Solo cuentas con rol 'admin';
 // todo se valida aquí, en el servidor, no en el navegador.
 //
 // GET  -> lista completa (visibles y ocultas)
@@ -9,7 +9,7 @@
 
 require_once __DIR__ . '/sesion.php';
 
-const CARPETA_ESCUDOS = __DIR__ . '/../img/imgpregrados/Unis/';
+const CARPETA_ESCUDOS = __DIR__ . '/../img/imgeducacion/Unis/';
 const TAMANO_MAX_ESCUDO = 1048576; // 1 MB
 const TIPOS_ESCUDO = ['image/png' => 'png', 'image/jpeg' => 'jpg', 'image/webp' => 'webp'];
 
@@ -25,7 +25,7 @@ if ($admin['rol'] !== 'admin') {
 $pdo = rem_obtener_bd();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $stmt = $pdo->query('SELECT id, nombre, escudo, url_oferta, orden, activa FROM universidades ORDER BY orden, id');
+    $stmt = $pdo->query('SELECT id, nombre, escudo, url_oferta, texto_oferta, orden, activa FROM universidades ORDER BY orden, id');
     rem_responder(['exito' => true, 'universidades' => $stmt->fetchAll()]);
 }
 
@@ -38,7 +38,7 @@ function rem_error(string $mensaje): void {
 }
 
 // nombre y enlace de la oferta: el enlace solo puede ser http(s), para que
-// nadie guarde un "javascript:" que se ejecutaría al hacer clic en Pregrados
+// nadie guarde un "javascript:" que se ejecutaría al hacer clic en Educación
 function rem_datos_universidad(): array {
     $nombre = trim((string) ($_POST['nombre'] ?? ''));
     $url = trim((string) ($_POST['url_oferta'] ?? ''));

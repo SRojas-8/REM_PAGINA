@@ -147,7 +147,7 @@ function pintarResultados() {
         </div>
     `).join("") + `
         <p class="nota_areas">Análisis basado en tus ${preguntas.length} respuestas.
-        <a href="pregrados.html">Ver programas relacionados en Pregrados →</a></p>`;
+        <a href="educacion.html">Ver programas relacionados en Educación →</a></p>`;
 
     $("aviso_informe").classList.remove("visible");
 }
